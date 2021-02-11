@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<title>3D Viewer</title>
+		<style>
+			body {
+				margin: 0;
+			}
+		</style>
+	</head>
+	<body onload="updateIframeFromUrlParameters();">
+		<div class="sketchfab-embed-wrapper">
+			<iframe id="sketchfabModel" frameborder="0" allow="autoplay; fullscreen; vr" mozallowfullscreen="true" webkitallowfullscreen="true" style="border: 0; width: 100%; height: 100%"></iframe>
+		</div>
+		<script>
+			function getUrlParameters() {
+				var currentUrl = new URL(window.location.href);
+				var params = new URLSearchParams(currentUrl.search.slice(1));
+
+				return params;
+			}
+
+
+			function updateIframeFromUrlParameters() {
+				var urlParameters = getUrlParameters();
+
+				var iFrameUrl = "https://sketchfab.com/models/" + urlParameters.get("modelId") + "/embed?autostart=1&amp;ui_controls=0&amp;ui_infos=0&amp;ui_inspector=0&amp;ui_stop=0&amp;ui_watermark=1&amp;ui_watermark_link=1;";
+				
+				console.log(iFrameUrl);
+
+				var sketchfabModelIframe = document.getElementById("sketchfabModel");
+				sketchfabModel.src = iFrameUrl;
+			}
+		</script>
+	<body>
+</html>
